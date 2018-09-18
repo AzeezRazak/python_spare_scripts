@@ -24,3 +24,14 @@ n = int(input())
 integer_list = tuple(map(int, input().split()))
     
 print(hash(integer_list))
+
+
+# String, Sub_String
+import re, sys
+
+def count_substring(string, sub_string):
+    haystack = string.strip()
+    needle = sub_string.strip()
+
+# finds overlapping matches
+    return(len(re.findall("(?=%s)" % needle, haystack)))
