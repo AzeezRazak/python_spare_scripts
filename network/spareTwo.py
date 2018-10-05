@@ -1,18 +1,9 @@
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+# Allow for the capture of TCP or UDP packets specified on the command line.
+# Allow for storage of the capture packets into the newly created IPObservationClass
+# Allow for storage of the Operating System Observations into the newly created OSObservationClass
+# Add a PrintOB method to both the IPObservation and OSObservation classes, to print their contents
+# Allow the user to specify the time period of the capture
+# Save results of capture to a file
 
 import argparse
 import socket
