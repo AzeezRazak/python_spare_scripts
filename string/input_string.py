@@ -106,3 +106,35 @@ if actual > expected:
         fine = 10000
 
 print(fine)
+
+
+
+# RegEx, Patterns, and Intro to Databases
+# Consider a database table, Emails, which has the attributes First Name and Email ID. Given N rows of data
+# simulating the Emails table, print an alphabetically-ordered list of people whose email address ends in @gmail.com
+# Print an alphabetically-ordered list of first names for every user with gmail account. Each name must be printed on a new line
+# Sample Input 6 \n riya riya@gmail.com \n julia julia@julia.me \n julia sjulia@gmail.com \n julia julia@gmail.com \n samantha samantha@gmail.com \n tanya tanya@gmail.com
+# julia \n julia \n riya \n samantha \n tanya
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    gmail_regex = re.compile("^[a-z\.]+@gmail.com$")
+    gmail_accounts = dict()
+    N = int(input().strip())
+    for _ in range(N):
+        firstName, email = input().strip().split(' ')
+        if gmail_regex.match(email):
+            gmail_accounts[email] = firstName
+
+sorted_names = sorted(gmail_accounts.values())
+print(*sorted_names, sep="\n")
+
