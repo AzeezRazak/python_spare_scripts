@@ -1,0 +1,9 @@
+pmt = -1000
+fv = 700000
+nper = 180
+pv = -50000
+ret = np.rate(nper,pmt,pv,fv)
+EAR = (1+ret)** 12 - 1
+APR = ret*12
+print ('EAR = {:}'.format(EAR))
+print('APR={}'.format(APR))
