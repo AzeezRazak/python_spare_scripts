@@ -1,0 +1,30 @@
+import pandas as pd
+import datetime
+import numpy as np
+df1 = pd.read_csv('portfolios.csv', index_col="id")
+df2 = pd.read_csv('raw_price_data.csv', index_col="Date")
+
+selected_pf = 1560
+query_date = np.datetime64('2015-12-31')
+
+#print(df1.loc[selected_pf])
+
+print("Query Date : " + str(query_date))
+print("Portfolio ID : " + str(selected_pf))
+print("Creation Date : " + str(df1["PC Date"].loc[selected_pf]))
+print("Initial / Monthly Investment : " + str(df1["initial_invt"].loc[selected_pf]) + "/" + str(df1["monthly_invt"].loc[selected_pf]))
+
+ww_1 = (str(round((df1["w_1"].loc[selected_pf]*100),1)) + "%")
+ww_2 = (str(round((df1["w_2"].loc[selected_pf]*100),1)) + "%")
+ww_3 = (str(round((df1["w_3"].loc[selected_pf]*100),1)) + "%")
+ww_4 = (str(round((df1["w_4"].loc[selected_pf]*100),1)) + "%")
+
+print("Stock Allocation : ")
+print(str(df1["x_1"].loc[selected_pf]) + "(" + ww_1 + "), " + str(df1["x_2"].loc[selected_pf]) + "(" + ww_2 + "), " \
+    + str(df1["x_3"].loc[selected_pf]) + "(" + ww_3 + "), " + str(df1["x_4"].loc[selected_pf]) + "(" + ww_4 + ") ")
+
+print("")
+#print(df2,[df1["x_1"].loc[selected_pf]])
+#df2["Date"] = np.datetime64(df2["Date"])
+#df3 = (df2["Date"] <= query_date)
+print(df2.filter(items=[df1["x_1"].loc[selected_pf], df1["x_2"].loc[selected_pf], df1["x_3"].loc[selected_pf], df1["x_4"].loc[selected_pf],]))
